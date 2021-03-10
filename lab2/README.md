@@ -98,6 +98,8 @@ user\@user:\~/block_device$ sudo dd if=/dev/mydisk2 of=/dev/sda1 count=1
 512 bytes copied, 0,000481475 s, 1,1 MB/s  
 user\@user:\~/block_device$ sudo xxd /dev/sda1 | less  
 
+![image](https://user-images.githubusercontent.com/48588005/110637041-0bff9280-81be-11eb-9aeb-7f3fa1e525b3.png)
+
 ![image](https://user-images.githubusercontent.com/48588005/110636148-fc337e80-81bc-11eb-9e63-52e818f9bb8d.png)
 
 
