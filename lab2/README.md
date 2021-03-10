@@ -21,51 +21,51 @@ rm:
 	sudo rmmod main.ko  
 
 ## Инструкция пользователя
-Собрать проект командой make в соответствии с инструкцией в Makefile  
-Загрузить модуль в ядро командой sudo insmod main.ko
-Командой sudo fdisk /dev/mydisk -l вывести список разделов выбранного диска
-Убедиться, что диск разбит на разделы верно, в соответствии с вариантом задания
-Командой dmesg просмотреть вывод в кольцевой буфер ядра
+Собрать проект командой make в соответствии с инструкцией в Makefile    
+Загрузить модуль в ядро командой sudo insmod main.ko  
+Командой sudo fdisk /dev/mydisk -l вывести список разделов выбранного диска  
+Убедиться, что диск разбит на разделы верно, в соответствии с вариантом задания  
+Командой dmesg просмотреть вывод в кольцевой буфер ядра  
 
-Убедившись в правильном выполнении, двигаться далее
+Убедившись в правильном выполнении, двигаться далее  
 
-Провести форматирование разделов диска с помощью команды mkfs.vfat
-sudo mkfs.vfat /dev/mydisk1
-sudo mkfs.vfat /dev/mydisk2
-sudo mkfs.vfat /dev/mydisk3
-sudo mkfs.vfat /dev/mydisk5
-sudo mkfs.vfat /dev/mydisk6
+Провести форматирование разделов диска с помощью команды mkfs.vfat  
+sudo mkfs.vfat /dev/mydisk1  
+sudo mkfs.vfat /dev/mydisk2  
+sudo mkfs.vfat /dev/mydisk3  
+sudo mkfs.vfat /dev/mydisk5  
+sudo mkfs.vfat /dev/mydisk6  
 
-Выдать полные права для раздела mydisk1
-sudo chmod 777 /dev/mydisk1
+Выдать полные права для раздела mydisk1  
+sudo chmod 777 /dev/mydisk1  
 
-Командой dd заполнить нулями первый сектор первого раздела
-sudo dd if=/dev/zero of=/dev/mydisk1 count=1
+Командой dd заполнить нулями первый сектор первого раздела  
+sudo dd if=/dev/zero of=/dev/mydisk1 count=1  
 
-Командой cat вставить некую строку 
-sudo cat > /dev/mydisk1
-this is a test 
+Командой cat вставить некую строку   
+sudo cat > /dev/mydisk1  
+this is a test   
 
-Командой xxd показать первоначальные данные, находящиеся в разделе mydisk1
-sudo xxd /dev/mydisk1 | less
+Командой xxd показать первоначальные данные, находящиеся в разделе mydisk1  
+sudo xxd /dev/mydisk1 | less  
 
-Убедиться в наличии строки this is a test 
+Убедиться в наличии строки this is a test   
 
-Скопировать эту строку в другой раздел виртуального диска и измерить скорость передачи данных
-Командой dd скопировать эту строку из mydisk1 в mydisk2 
-sudo dd if=/dev/mydisk1 of=/dev/mydisk2 count=1
-Скорость составила 1.2 MB/s
+Скопировать эту строку в другой раздел виртуального диска и измерить скорость передачи данных  
+Командой dd скопировать эту строку из mydisk1 в mydisk2   
+sudo dd if=/dev/mydisk1 of=/dev/mydisk2 count=1  
+Скорость составила 1.2 MB/s  
 
-Командой dd скопировать эту строку из mydisk2 в mydisk5 
-sudo dd if=/dev/mydisk2 of=/dev/mydisk5 count=1
-Скорость составила 1.7 MB/s
+Командой dd скопировать эту строку из mydisk2 в mydisk5   
+sudo dd if=/dev/mydisk2 of=/dev/mydisk5 count=1  
+Скорость составила 1.7 MB/s  
 
-Скопировать эту строку из раздела виртуального в реальный жесткий диск и измерить скорость передачи данных
-Командой dd скопировать эту строку из mydisk1 в sda1 
-sudo dd if=/dev/mydisk2 of=/dev/sda1 count=1
-Скорость составила  1.1 MB/s
+Скопировать эту строку из раздела виртуального в реальный жесткий диск и измерить скорость передачи данных  
+Командой dd скопировать эту строку из mydisk1 в sda1   
+sudo dd if=/dev/mydisk2 of=/dev/sda1 count=1   
+Скорость составила  1.1 MB/s  
 
-Выгрузить модуль из ядра командой sudo rmmod main
+Выгрузить модуль из ядра командой sudo rmmod main  
 ## Примеры использования
 
 user\@user:\~/block_device$ make  
